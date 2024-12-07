@@ -1,3 +1,3 @@
 # presentation-domain-separation-practice
 
-presentation-domain-separation-practiceを練習するためのリポジトリ
+[presentation-domain-separation](https://martinfowler.com/bliki/PresentationDomainSeparation.html) を練習するためのリポジトリ
