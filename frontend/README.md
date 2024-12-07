@@ -1,3 +1,3 @@
 # frontend
 
-React.jsで作成したSPA。
+ViteのReactテンプレートで作成したSPA。
