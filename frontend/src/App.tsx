@@ -17,7 +17,7 @@ const Status = async () => {
         );
 
     } catch (err) {
-        console.error("Failed to connect with api: " + err)
+        console.error("Failed to communicate with api: " + err)
     }
 }
 
