@@ -1,3 +1,3 @@
 # frontend
 
-Next.jsで作成したSPA。
+React.jsで作成したSPA。
