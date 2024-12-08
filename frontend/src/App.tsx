@@ -1,30 +1,37 @@
+import {useEffect, useState} from "react";
 import axios from 'axios';
 
-const Status = async () => {
+const Status = () => {
 
-    const instance = axios.create({
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
+  const [state, setState] = useState("");
 
-    try {
-        const response = await instance.get("http://localhost:8000");
-        return (
-            <p>
-                <b>Status is: {response.data.status}</b>
-            </p>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000", {
+              headers: {
+                'Content-Type': 'application/json',
+              }
+            }
         );
-
-    } catch (err) {
+        setState(response.data);
+      } catch (err) {
         console.error("Failed to communicate with api: " + err)
-    }
+      }
+    };
+    fetchData();
+  }, []);
+
+  return (
+        <b>API status: {state.status}</b>
+  );
 }
 
 export const App = () => {
-    return (
-        <div className="App">
-            <Status />
-        </div>
-    );
+
+  return (
+      <p>
+        <Status/>
+      </p>
+  );
 }
