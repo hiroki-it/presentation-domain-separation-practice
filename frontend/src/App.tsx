@@ -11,9 +11,9 @@ const Status = async () => {
     try {
         const response = await instance.get("http://localhost:8000");
         return (
-            <main>
-                <h1>Status is: {response.data.status}</h1>
-            </main>
+            <p>
+                <b>Status is: {response.data.status}</b>
+            </p>
         );
 
     } catch (err) {
@@ -24,7 +24,7 @@ const Status = async () => {
 export const App = () => {
     return (
         <div className="App">
-            <Status/>
+            <Status />
         </div>
     );
 }
