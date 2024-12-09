@@ -1,6 +1,6 @@
 FROM node:22.11.0-bookworm-slim
 
-WORKDIR .
+WORKDIR /app
 
 COPY package.json yarn.lock ./
 
