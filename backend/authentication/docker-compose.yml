@@ -3,6 +3,7 @@ version: '3.9'
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:26.0
+    container_name: authentication-service
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: password

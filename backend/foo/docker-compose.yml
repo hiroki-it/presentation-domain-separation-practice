@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: foo
+    container_name: foo-service
     image: foo:latest
     volumes:
       - .:/go/src
