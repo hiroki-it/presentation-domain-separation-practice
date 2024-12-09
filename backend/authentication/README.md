@@ -1,6 +1,6 @@
-# frontend
+# authentication
 
-ViteのReactテンプレートで作成したSPA。
+APIに代わりにユーザー情報を管理するIDプロバイダー
 
 ## セットアップ
 
