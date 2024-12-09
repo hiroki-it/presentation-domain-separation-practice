@@ -20,6 +20,38 @@ services:
     networks:
       - shared-network
 
+  mysql:
+    image: mysql:8.0.40
+    container_name: authentication-service-db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p$MYSQL_ROOT_PASSWORD",
+        ]
+      # 頻度が高すぎるとMySQLの起動前にヘルスチェック処理が終わってしまうため、10秒くらいがちょうどいい
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:
+
 networks:
   shared-network:
     external: true
