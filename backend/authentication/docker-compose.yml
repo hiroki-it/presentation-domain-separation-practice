@@ -19,6 +19,7 @@ services:
       - 8443:8443
     entrypoint: ["/opt/keycloak/bin/kc.sh", "start-dev"]
     networks:
+      - authentication-network
       - shared-network
     depends_on:
       mysql:
@@ -52,10 +53,14 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - authentication-network
+      - shared-network
 
 volumes:
   db_data:
 
 networks:
+  authentication-network:
   shared-network:
     external: true
