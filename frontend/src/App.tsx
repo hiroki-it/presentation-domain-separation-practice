@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import { useAuth } from "react-oidc-context";
 import axios from 'axios';
 
 const Status = () => {
@@ -29,9 +30,50 @@ const Status = () => {
 
 export const App = () => {
 
+  const auth = useAuth();
+
+  switch (auth.activeNavigator) {
+    case "signinSilent":
+      return (
+          <div>
+            ログイン中...
+          </div>
+      );
+    case "signoutRedirect":
+      return (
+          <div>
+            ログアウト中...
+          </div>
+      );
+  }
+
+  if (auth.isLoading) {
+    return (
+        <div>
+          読み込み中...
+        </div>
+    );
+  }
+
+  if (auth.error) {
+    return (
+        <div>
+          Oops... {auth.error.message}
+        </div>);
+  }
+
+  if (auth.isAuthenticated) {
+
+    return (
+        <p>
+          <Status/>
+        </p>
+    );
+  }
+
   return (
-      <p>
-        <Status/>
-      </p>
+      <button onClick={() => void auth.signinRedirect()}>
+        ログイン
+      </button>
   );
 }
