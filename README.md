@@ -9,3 +9,5 @@
 ```bash
 $ docker network create shared-network
 ```
+
+2. 各ディレクトリ配下のコンテナをセットアップする。個別のREADMEを参照。
