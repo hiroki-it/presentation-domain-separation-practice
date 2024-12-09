@@ -10,3 +10,9 @@ services:
     volumes:
       - .:/frontend
       - /frontend/node_modules
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true

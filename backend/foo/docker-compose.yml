@@ -11,3 +11,9 @@ services:
       - .:/go/src
     ports:
       - "8080:80"
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
