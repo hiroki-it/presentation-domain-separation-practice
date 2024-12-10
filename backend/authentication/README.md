@@ -11,3 +11,14 @@ Keycloakで作成したIDプロバイダーの認証サービス。
 ```bash
 $ docker-compose up 
 ```
+
+2. DBに接続する。
+
+
+```bash
+$ docker exec -it authentication-service-db /bin/bash
+
+bash-5.1# mysql -u keycloak -ppassword keycloak
+
+mysql> show tables
+```
